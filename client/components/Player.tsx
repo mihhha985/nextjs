@@ -1,6 +1,4 @@
 import { useEffect } from "react";
-import { PlayArrow, Pause, VolumeUp } from '@material-ui/icons';
-import { Grid, IconButton} from "@material-ui/core";
 import styles from "../styles/Player.module.scss";
 import TrackProgres from "./TrackProgres";
 import { useTypedSelector } from "../hooks/useTypeSelector";
@@ -73,18 +71,18 @@ const Player:React.FC = () => {
 
     return (
         <div className={styles.palyer}>
-            <IconButton onClick={play}>
+            <button onClick={play}>
                 {pause
-                    ? <PlayArrow />
-                    : <Pause />
+                    ? <span>play</span>
+                    : <span>pause</span>
                 }
-            </IconButton>
-            <Grid container direction="column"style={{width:200, margin:'0 20px'}}>
+            </button>
+            <div style={{width:200, margin:'0 20px'}}>
                 <div>{active?.name}</div>
                 <div>{active?.artist}</div>        
-            </Grid>
+            </div>
             <TrackProgres left={currentTime} right={duration} onChange={changeCurrentTime} />
-            <VolumeUp style={{marginLeft:'auto'}}/>
+            <span style={{marginLeft:'auto'}}>volume</span>
             <TrackProgres left={volume} right={100} onChange={changeVolyme} />
         </div>
     )

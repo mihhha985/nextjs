@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ChangeEventHandler, ReactEventHandler } from "react";
+import React, { ChangeEvent } from "react";
 
 interface TrackProgresProps {
     left: number;

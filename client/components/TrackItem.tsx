@@ -1,8 +1,6 @@
 import {useState} from "react";
 import { useRouter } from "next/router";
-import { Grid, Card, IconButton} from "@material-ui/core";
 import { ITrack } from "../types/track";
-import { PlayArrow, Pause, Delete } from '@material-ui/icons';
 import styles from '../styles/TrackItem.module.scss';
 import { useActions } from "../hooks/useActions";
 
@@ -23,23 +21,23 @@ const TrackItem:React.FC<TrackItemProps> = ({track}) => {
     }
 
     return(
-        <Card className={styles.track} onClick={() => router.push('/tracks/' + track.id)}>
-            <IconButton onClick={play}>
+        <div className={styles.track} onClick={() => router.push('/tracks/' + track.id)}>
+            <button onClick={play}>
                 {!active 
-                    ? <PlayArrow />
-                    : <Pause />
+                    ? <span>play</span>
+                    : <span>pause</span>
                 }
-            </IconButton>
+            </button>
             <img width={70} height={70} src={`http://localhost:5000/${track.picture}`} />
-            <Grid container direction="column">
+            <div>
                 <div>{track.name}</div>
                 <div style={{fontSize:'12px', color:'gray'}}>{track.artist}</div>
-            </Grid>
+            </div>
             {active && <div style={{width:'120px'}}>02:42 / 03:15</div>} 
-            <IconButton onClick={e => e.stopPropagation()}>
-                <Delete />    
-            </IconButton>  
-        </Card>
+            <button onClick={e => e.stopPropagation()}>
+                <span>delete</span>   
+            </button>  
+        </div>
     );
 }
 

@@ -1,4 +1,3 @@
-import { Button, Grid, TextField } from "@material-ui/core";
 import axios from "axios";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
@@ -32,38 +31,28 @@ const TrackPage = ({serverTrack}) => {
 
     return(
         <MainLayout title={track.name + ' - ' + track.artist}>
-            <Button
+            <button
                 style={{fontSize: '32px'}}
-                variant={"outlined"} 
                 onClick={() => router.push('/tracks')}
             >
                 К списку
-            </Button>
-            <Grid container>
+            </button>
+            <button>
                 <img width={200} height={200} src={'http://localhost:5000/' + track.picture} />
                 <div>
                     <h1>Название трэка - {track.name}</h1>
                     <h1>Исполнитель трэка - {track.artist}</h1>
                     <h1>Прослушивание трэка - {track.listens}</h1>
                 </div>
-            </Grid>
+            </button>
             <h1>Слова в трэке</h1>
             <p>{track.text}</p>
             <h1>Коментарии</h1>
-            <Grid container>
-                <TextField 
-                    label="Ваше имя" 
-                    fullWidth 
-                    {...username}
-                ></TextField>
-                <TextField 
-                    label="Коментарий" 
-                    fullWidth multiline 
-                    rows={4} 
-                    {...text}
-                ></TextField>
-                <Button onClick={addComment}>Отправить</Button>
-            </Grid>
+            <button>
+                <input {...username} />
+                <input {...text} />
+                <button onClick={addComment}>Отправить</button>
+            </button>
             <div>
                 {track.comments.length > 0 && 
                     track.comments.map(comment => 

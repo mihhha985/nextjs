@@ -1,5 +1,4 @@
-import Button from '@material-ui/core/Button';
-import Navbar from '../components/Navbar';
+
 import MainLayout from '../layouts/MainLayouts';
 
 export default function Home(){
@@ -9,9 +8,9 @@ export default function Home(){
             <div className="center">
                 <h1>Добро пожаловать</h1>
                 <h3>Здесь собраны лучшие треки</h3>
-                <Button variant="contained" color="primary">
+                <button>
                     Hello World
-                </Button>
+                </button>
             </div>
             <style jsx>
                 {`

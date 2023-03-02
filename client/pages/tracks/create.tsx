@@ -1,7 +1,6 @@
 import {useState} from 'react';
 import MainLayout from '../../layouts/MainLayouts';
 import StepWrapper from '../../components/StepWrapper';
-import { Button, Grid, TextField } from '@material-ui/core';
 import FileUpload from '../../components/FileUpload';
 import { useInput } from '../../hooks/useInputs';
 import axios from 'axios';
@@ -45,48 +44,27 @@ const Create:React.FC = () => {
         <MainLayout>
             <StepWrapper activeStep={activeStep}>
                 {activeStep === 0 && 
-                    <Grid container direction='column' style={{padding:20}}>
-                        <TextField
-                            {...name}
-                            variant="outlined"
-                            style={{marginTop:10}}
-                            label={"Название трэка"}
-                        />
-                        <TextField
-                            {...artist}
-                            variant="outlined"
-                            style={{marginTop:10}}
-                            label={"Имя исполнителя"}
-                        />
-                        <TextField
-                            {...text}
-                            variant="outlined"
-                            style={{marginTop:10}}
-                            label={"Слова к трэку"}
-                            rows={3}
-                            multiline
-                        />
-                    </Grid>
+                    <div style={{padding:20}}>
+                        <input {...name} style={{marginTop:10}} />
+                        <input {...artist} style={{marginTop:10}} />
+                        <input {...text} style={{marginTop:10}} />
+                    </div>
                 }
                 {activeStep === 1 && 
                     <FileUpload setFile={setPicture} accept="image/*">
-                        <Button  variant="contained" color="primary">
-                            Загрузить изображение
-                        </Button>
+                        <button>Загрузить изображение</button>
                     </FileUpload>
                 }
                 {activeStep === 2 && 
                     <FileUpload setFile={setAudio} accept="audio/*">
-                        <Button  variant="contained" color="primary">
-                            Загрузить аудио
-                        </Button>
+                        <button>Загрузить аудио</button>
                     </FileUpload>
                 }
             </StepWrapper>
-            <Grid container justifyContent="space-around">
-                <Button variant="contained" disabled={activeStep === 0} onClick={prev}>Далее</Button>
-                <Button variant="contained" onClick={next}>Далее</Button>
-            </Grid>
+            <div>
+                <button disabled={activeStep === 0} onClick={prev}>Далее</button>
+                <button onClick={next}>Далее</button>
+            </div>
         </MainLayout>
     )
 }

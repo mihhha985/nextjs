@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Grid, Card, Button, Box, TextField } from "@material-ui/core";
 import { useRouter } from "next/router";
 import { useTypedSelector} from '../../hooks/useTypeSelector';
 import TrackList from "../../components/TrackList";
@@ -30,25 +29,18 @@ export default function Tracks(){
 
     return(
         <MainLayout title="Список трэков">
-            <Grid container>
-                <Card style={{width: '90%', padding: '10px'}}>
-                    <Grid container justifyContent={"space-between"}>
+            <div>
+                <div style={{width: '90%', padding: '10px'}}>
+                    <div>
                         <h1>Список трэков</h1>
-                        <Button 
-                            variant="contained"
-                            onClick={() => router.push('/tracks/create')}
-                        >
+                        <button onClick={() => router.push('/tracks/create')}>
                             Загрузить
-                        </Button>
-                    </Grid>
-                    <TextField 
-                        fullWidth
-                        value={query}
-                        onChange={search}
-                    />
-                </Card>
+                        </button>
+                    </div>
+                    <input value={query} onChange={search} />
+                </div>
                 <TrackList tracks={tracks}/>
-            </Grid>
+            </div>
         </MainLayout>
     )
 }

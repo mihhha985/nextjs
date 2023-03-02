@@ -1,4 +1,3 @@
-import { Container } from "@material-ui/core";
 import Navbar from "../components/Navbar";
 import Head from 'next/head';
 import Player from "../components/Player";
@@ -22,13 +21,11 @@ const MainLayout:React.FC<MainLayoutProps> = ({children, title, description, key
                     name="viewport"
                     content="minimum-scale=1, initial-scale=1, width=device-width"
                 />
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
             </Head>
             <Navbar />
-            <Container style={{marginTop:'90px'}}>
+            <div style={{marginTop:'90px'}}>
                 {children}
-            </Container>
+            </div>
             <Player />
         </>
     )
