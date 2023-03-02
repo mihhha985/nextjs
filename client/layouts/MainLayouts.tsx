@@ -6,6 +6,7 @@ interface MainLayoutProps{
     title?: string;
     description?: string;
     keywords?: string;
+    children:any;
 }
 
 const MainLayout:React.FC<MainLayoutProps> = ({children, title, description, keywords}) => {
